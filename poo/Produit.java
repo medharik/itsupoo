@@ -16,6 +16,12 @@ public class Produit {
 		System.out.println("quantité en stock est : "+qteStock);
 		
 	}
+	 @Override
+	public String toString() {
+		
+		return "libelle :"+this.libelle+"\nPrix : "+this.prix+"\nQte en stock : "+this.qteStock;
+	}
+	 
 	 
 //	 void affichertout() {
 //		System.out.println("Libellé est : "+libelle);

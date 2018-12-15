@@ -22,9 +22,25 @@ System.out.println("ttc est "+ttc+ " $");
 hp.afficher();
 
 dell=new Produit();
-hp.libelle="dell 996";
-hp.prix=10000;
-hp.qteStock=60;
-hp.afficher();
+dell.libelle="dell 996";
+dell.prix=10000;
+dell.qteStock=60;
+dell.afficher();
+System.out.println(hp);
+System.out.println("*************************************");
+Categorie  eletro=new Categorie();
+eletro.initiliser(3);
+eletro.nom="Eletromenager";
+eletro.ajouterProduit(hp, 0);
+eletro.ajouterProduit(dell,1 );
+
+Produit sony=new Produit();
+
+sony.libelle="sony";
+sony.prix=12000;
+sony.qteStock=10;
+eletro.ajouterProduit(sony, 2);
+eletro.afficher();
+System.out.println("la valeur du stock eletro : "+eletro.valeurStock()+" $");
 }
 }
