@@ -1,5 +1,11 @@
 <?php 
 include "module.php";
+demarrer_session();
+extract($_SESSION);
+//var_dump($_SESSION);
+
+verifier($login,$passe);
+
 $produits=all();
 ?>
 <!DOCTYPE html>

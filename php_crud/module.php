@@ -1,6 +1,7 @@
 <?php 
 $cnx="";
 function connecter_db ( ) {
+
     $cnx=new PDO("mysql:host=localhost;dbname=dbproduit","root","");
     return $cnx;
     }
@@ -43,15 +44,39 @@ return $rp->fetch();
 function get_by($condition){
     
     $cnx =connecter_db();
-    $rp=$cnx->prepare("select * from where $condition");
+    $rp=$cnx->prepare("select * from produits where $condition");
     $rp->execute(array());
 return $rp->fetchAll();
 }
 
 function sir($url){
 header("location:$url");
+exit();
 }
 
+function demarrer_session(){
+if(!isset($_SESSION)){
+session_start();
+
+}
+session_regenerate_id();
+}
+function verifier($login,$passe){
+    $cnx =connecter_db();
+    $rp=$cnx->prepare("select * from users where login=? and passe=?");
+    $rp->execute(array($login,$passe));
+   $user= $rp->fetch();
+   //var_dump($user);
+  // die("erreur");
+   if(empty($user)){
+        sir("login.php?cn=no");
+   }else{
+    demarrer_session();
+       $_SESSION['login']=$login;
+       $_SESSION['passe']=$passe;
+       $_SESSION['nom']=$user['nom'];
+   }
+}
 
 
 ?>
